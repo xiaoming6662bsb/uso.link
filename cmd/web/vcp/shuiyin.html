@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"
+    />
+    <title>
+        {{ .title }}
+    </title>
+    <meta name="applicable-device" content="pc,mobile" />
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <meta name="keywords" content="{{ .keywords }}" />
+    <meta name="description" content="{{ .description }}" />
+    <meta name="renderer" content="webkit" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <link rel="icon" href="/favicon.ico" mce_href="/favicon.ico" type="image/x-icon"
+    />
+    <link href="/static/style/bootstrap.min.css" rel="stylesheet" type="text/css"
+    />
+    <link href="/static/style/tool.css" rel="stylesheet" type="text/css" />
+    <!--[if lt IE 9]>
+    <script src="http://apps.bdimg.com/libs/html5shiv/3.7/html5shiv.min.js">
+    </script>
+    <script src="http://apps.bdimg.com/libs/respond.js/1.4.2/respond.min.js">
+    </script>
+    <![endif]-->
+    <style>
+        #container {
+            max-width: 500px;
+            margin: 30px auto;
+        }
+
+        h1 { margin: 0 }
+        p, article { margin: 0 0 20px 0 }
+        article { font-size: 14px; color: #777 }
+
+        label { color: blue; font-size: 12px }
+        p label { color: black; display: inline-block; margin-right: 5px; font-size: 15px }
+        p { font-size: 15px; line-height: 30px }
+        p > * { vertical-align: middle }
+
+        input#text { width: 100%; box-sizing: border-box; font-size: 16px; margin-bottom: 10px }
+        input[type=range] { width: 200px; height: 2px; }
+
+        canvas { box-sizing: border-box; width: 100%; border: 1px dashed #AAA; cursor: pointer }
+    </style>
+</head>
+
+<body>
+{{ template "header.html" . }}
+<div class="container">
+    <div class="row">
+        <div class="col-md-12 col10main">
+            <div class="accordion" id="accordion2">
+                <div class="accordion-group">
+
+                    <div class="panel">
+                        <div id="container">
+                            <h1>图片水印打码工具</h1>
+                            <article>安全地为你的图片加水印，无任何网络请求，特别适合各种敏感证件（身份证，驾照，护照等）。</article>
+
+                            <label for="image">第一步：先选择一张本地图片</label>
+                            <p><input type="file" id="image" autocomplete="off"></p>
+
+
+                            <label for="text">第二步：输入需要打水印的文字</label>
+                            <p><input type="text" id="text" placeholder="请输入文字" autocomplete="off" value="uso.link" maxlength="30">
+
+                                <label for="color">颜色</label>
+                                <input type="color" id="color" pattern="#[0-9A-Fa-f]{6}" autocomplete="off" value="#e6e9ef"><br>
+
+                                <label for="alpha">透明度</label>
+                                <input type="range" id="alpha" min="0" max="1" step="0.05" autocomplete="off" value="0.35"><br>
+
+                                <label for="angle">角度</label>
+                                <input type="range" id="angle" min="-90" max="90" step="3" autocomplete="off" value="45"><br>
+
+                                <label for="space">间隔</label>
+                                <input type="range" id="space" min="1" max="8" step="0.2" autocomplete="off" value="4"><br>
+
+                                <label for="size">字号</label>
+                                <input type="range" id="size" min="0.5" max="3" step="0.05" autocomplete="off" value="1">
+                            </p>
+
+                            <label for="text">第三步：点击图片下载</label>
+                            <p>
+                                <label for="auto-refresh">实时刷新</label>
+                                <input type="checkbox" id="auto-refresh" autocomplete="off" checked>
+                                <button id="refresh" disabled>刷新</button>
+                            </p>
+                            <p id="graph"></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion-group">
+                    <div class="in collapse bs-docs-demoexample">
+                        <h4>
+                            图片水印打码工具
+                        </h4>
+                        <p>
+                            图片加水印的起源可追溯到中世纪纸张制造，通过在纸张中嵌入标志以防伪和标识所有权。随着数字时代的到来，水印技术被引入到电子图像中，用于保护版权和防止盗用。早期的数字水印主要是可见的文字或标志，现代则发展出隐形水印，利用复杂算法嵌入不可察觉的信息。趣闻包括一些艺术家利用水印创作隐秘图案，甚至有恶搞水印的案例。此外，冷知识是数字水印不仅用于版权保护，还广泛应用于验证图像来源和追踪传播路径。水印技术因其有效性和多样性，广泛应用于摄影、设计和网络内容保护领域。
+                        </p>
+                    </div>
+                </div>
+                <div class="accordion-group">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="/static/script/jquery-1.11.3.min.js" type="text/javascript">
+</script>
+<script src="/static/script/bootstrap.min.js" type="text/javascript">
+</script>
+<script src="/static/script/tool.js" type="text/javascript">
+</script>
+<script src="/static/script/shuiyin.js" type="text/javascript">
+</script>
+<script>
+
+</script>
+{{ template "nav.html" . }} {{ template "footer.html" . }}
+</body>
+
+</html>
